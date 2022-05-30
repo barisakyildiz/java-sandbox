@@ -55,12 +55,15 @@ public class GenerateEquation {
         return equation1;
     }
     
-    public String generateResult(LinkedList<String> eq){
+    public String generateResult(LinkedList<String> eq) throws InvalidOperandException{
         String gotString;
         ArrayList<Integer> intList = new ArrayList<Integer>();
-        LinkedList<String> temp = eq;
-        int number1;
+        LinkedList<String> temp = new LinkedList<String>();
         String op;
+        for(int i = 0; i < eq.size(); i++){
+            temp.add(eq.get(i));
+        }
+        int number1;
         int numberOP = eq.size();
         for(int i = 0; i < numberOP; i++){
             if(i % 2 == 0){
@@ -73,54 +76,70 @@ public class GenerateEquation {
             }
         }
         for(int i = 0; i < numberOfOperators; i++){
-            switch (equation.get(1)) {
-                case "+":
-                    if(i == numberOfOperators - 1){
-                        return Integer.toString((intList.get(0) + intList.get(1)));
-                    }else if(i != numberOfOperators - 1){
-                        temp.set(0, Integer.toString((intList.get(0) + intList.get(1))));
-                        temp.remove(1);
-                        temp.remove(1);
-                        intList.set(0, (intList.get(0) + intList.get(1)));
-                        intList.remove(1);
-                        System.out.println("NerdleBack.GenerateEquation.generateResult()");
-                    }
-                case "-":
-                    if(i == numberOfOperators - 1){
-                        return Integer.toString((intList.get(0) - intList.get(1)));
-                    }else if(i != numberOfOperators - 1){
-                        temp.set(0, Integer.toString((intList.get(0) - intList.get(1))));
-                        temp.remove(1);
-                        temp.remove(1);
-                        intList.set(0, (intList.get(0) - intList.get(1)));
-                        intList.remove(1);
-                        System.out.println("NerdleBack.GenerateEquation.generateResult()");
-                    }
-                case "*":
-                    if(i == numberOfOperators - 1){
-                        return Integer.toString((intList.get(0) * intList.get(1)));
-                    }else if(i != numberOfOperators - 1){
-                        temp.set(0, Integer.toString((intList.get(0) * intList.get(1))));
-                        temp.remove(1);
-                        temp.remove(1);
-                        intList.set(0, (intList.get(0) * intList.get(1)));
-                        intList.remove(1);
-                        System.out.println("NerdleBack.GenerateEquation.generateResult()");
-                    }
-                case "/":
-                    if(i == numberOfOperators - 1){
-                        return Integer.toString((intList.get(0) / intList.get(1)));
-                    }else if(i != numberOfOperators - 1){
-                        temp.set(0, Integer.toString((intList.get(0) / intList.get(1))));
-                        temp.remove(1);
-                        temp.remove(1);
-                        intList.set(0, (intList.get(0) / intList.get(1)));
-                        intList.remove(1);
-                        System.out.println("NerdleBack.GenerateEquation.generateResult()");
-                    }
+            if(temp.get(1).equals("+")){
+                //System.out.println("eq = " + eq);
+                if(i == numberOfOperators - 1){
+                    return Integer.toString((intList.get(0) + intList.get(1)));
+                }else if(i != numberOfOperators - 1){
+                    temp.set(0, Integer.toString((intList.get(0) + intList.get(1))));
+                    temp.remove(1);
+                    temp.remove(1);
+                    intList.set(0, (intList.get(0) + intList.get(1)));
+                    //System.out.println("intList = " + intList + "|| i = " + i);
+                    intList.remove(1);
+                    /*System.out.println("eq = " + eq);
+                    System.out.println("intList = " + intList + "|| i = " + i);
+                    System.out.println("temp = " + temp);*/
+                }
+            }else if(temp.get(1).equals("-")){
+                //System.out.println("eq = " + eq);
+                if(i == numberOfOperators - 1){
+                    return Integer.toString((intList.get(0) - intList.get(1)));
+                }else if(i != numberOfOperators - 1){
+                    temp.set(0, Integer.toString((intList.get(0) - intList.get(1))));
+                    temp.remove(1);
+                    temp.remove(1);
+                    intList.set(0, (intList.get(0) - intList.get(1)));
+                    //System.out.println("intList = " + intList + "|| i = " + i);
+                    intList.remove(1);
+                    /*System.out.println("eq = " + eq);
+                    System.out.println("intList = " + intList + "|| i = " + i);
+                    System.out.println("temp = " + temp);*/
+                }
+            }else if(temp.get(1).equals("*")){
+                //System.out.println("eq = " + eq);
+                if(i == numberOfOperators - 1){
+                    return Integer.toString((intList.get(0) * intList.get(1)));
+                }else if(i != numberOfOperators - 1){
+                    temp.set(0, Integer.toString((intList.get(0) * intList.get(1))));
+                    temp.remove(1);
+                    temp.remove(1);
+                    intList.set(0, (intList.get(0) * intList.get(1)));
+                    //System.out.println("intList = " + intList + "|| i = " + i);
+                    intList.remove(1);
+                    /*System.out.println("eq = " + eq);
+                    System.out.println("intList = " + intList + "|| i = " + i);
+                    System.out.println("temp = " + temp);*/
+                }
+            }else if(temp.get(1).equals("/")){
+                //System.out.println("eq = " + eq);
+                if(i == numberOfOperators - 1){
+                    return Integer.toString((intList.get(0) / intList.get(1)));
+                }else if(i != numberOfOperators - 1){
+                    temp.set(0, Integer.toString((intList.get(0) / intList.get(1))));
+                    temp.remove(1);
+                    temp.remove(1);
+                    intList.set(0, (intList.get(0) / intList.get(1)));
+                    //System.out.println("intList = " + intList + "|| i = " + i);
+                    intList.remove(1);
+                    /*System.out.println("eq = " + eq);
+                    System.out.println("intList = " + intList + "|| i = " + i);
+                    System.out.println("temp = " + temp);*/
+                }
+            }else{
+                throw new InvalidOperandException("Current operator is invalid! Please Try Again.");
             }
         }
-        
         return("Invalid GAME! Something Wrong Happenned");
     }
     
