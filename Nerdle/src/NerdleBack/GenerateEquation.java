@@ -87,5 +87,18 @@ public class GenerateEquation {
         return("Invalid GAME! Something Wrong Happenned");
     }
     
+    public int calculateEquationLength(LinkedList<String> eq, String resultLen){
+        char[] charArr;
+        int totalLen = 0;
+        for(int i = 0; i < eq.size(); i++){
+            charArr = eq.get(i).toCharArray();
+            totalLen += charArr.length;
+        }
+        charArr = resultLen.toCharArray();
+        totalLen += charArr.length;
+        totalLen++;
+        return totalLen;
+    }
+    
     
 }

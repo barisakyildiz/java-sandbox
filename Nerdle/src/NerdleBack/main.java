@@ -1,18 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package NerdleBack;
 
 public class main {
     
-
+    public static int l;
+    public static String result;
     
     public static void main(String[] args){
-        GenerateEquation generateEquation = new GenerateEquation();
-        String equation = generateEquation.generateEquation();
-        System.out.println(equation);
-        System.out.println(generateEquation.getEquation());
-        System.out.println(generateEquation.generateResult(generateEquation.getEquation()));
+        do{
+            GenerateEquation generateEquation = new GenerateEquation();
+            l = 0;
+            String equation = generateEquation.generateEquation();
+            result = generateEquation.generateResult(generateEquation.getEquation());
+            l = generateEquation.calculateEquationLength(generateEquation.getEquation(), result);
+            if((l >= 7 && l <= 9) && !result.equals("0")){
+                System.out.println(generateEquation.getEquation());
+                System.out.println(generateEquation.generateResult(generateEquation.getEquation()));
+            }
+        }while((l < 7 || l > 9) || result.equals("0"));
+        
     }
 }
