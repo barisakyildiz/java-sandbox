@@ -9,14 +9,20 @@ public class GenerateEquation {
     private String operators = "+-*/";
     private String selectedNum;
     private char selectedOp;
-    private int numberOfOperators = 2;
+    private int numberOfOperators = randomGenerator.nextInt(4);
     
     public char getRandomOperator(){
         return operators.charAt(randomGenerator.nextInt(operators.length()));
     }
     
     public String getRandomNumber(){
-        return Integer.toString(randomGenerator.nextInt(100));
+        if(numberOfOperators == 1){
+            return Integer.toString(randomGenerator.nextInt(1000));
+        }else if(numberOfOperators == 2){
+            return Integer.toString(randomGenerator.nextInt(100));
+        }else{
+            return Integer.toString(randomGenerator.nextInt(10));
+        }
     }
 
     public String getSelectedNum() {
@@ -123,18 +129,24 @@ public class GenerateEquation {
                 }
             }else if(temp.get(1).equals("/")){
                 //System.out.println("eq = " + eq);
-                if(i == numberOfOperators - 1){
-                    return Integer.toString((intList.get(0) / intList.get(1)));
-                }else if(i != numberOfOperators - 1){
-                    temp.set(0, Integer.toString((intList.get(0) / intList.get(1))));
-                    temp.remove(1);
-                    temp.remove(1);
-                    intList.set(0, (intList.get(0) / intList.get(1)));
-                    //System.out.println("intList = " + intList + "|| i = " + i);
-                    intList.remove(1);
-                    /*System.out.println("eq = " + eq);
-                    System.out.println("intList = " + intList + "|| i = " + i);
-                    System.out.println("temp = " + temp);*/
+                try{
+                    if(i == numberOfOperators - 1 && (intList.get(0) % intList.get(1)) == 0){
+                        return Integer.toString((intList.get(0) / intList.get(1)));
+                    }else if(i != numberOfOperators - 1 && (intList.get(0) % intList.get(1)) == 0){
+                        temp.set(0, Integer.toString((intList.get(0) / intList.get(1))));
+                        temp.remove(1);
+                        temp.remove(1);
+                        intList.set(0, (intList.get(0) / intList.get(1)));
+                        //System.out.println("intList = " + intList + "|| i = " + i);
+                        intList.remove(1);
+                        /*System.out.println("eq = " + eq);
+                        System.out.println("intList = " + intList + "|| i = " + i);
+                        System.out.println("temp = " + temp);*/
+                    }else if((intList.get(0) % intList.get(1)) != 0){
+                        return "100000000";
+                    }
+                }catch(ArithmeticException e){
+                    return "100000000";
                 }
             }else{
                 throw new InvalidOperandException("Current operator is invalid! Please Try Again.");
