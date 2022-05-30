@@ -9,7 +9,7 @@ public class GenerateEquation {
     private String operators = "+-*/";
     private String selectedNum;
     private char selectedOp;
-    private int numberOfOperators = 1;
+    private int numberOfOperators = 2;
     
     public char getRandomOperator(){
         return operators.charAt(randomGenerator.nextInt(operators.length()));
@@ -58,9 +58,10 @@ public class GenerateEquation {
     public String generateResult(LinkedList<String> eq){
         String gotString;
         ArrayList<Integer> intList = new ArrayList<Integer>();
+        LinkedList<String> temp = eq;
         int number1;
         String op;
-        int numberOP = (numberOfOperators * 2) + 1;
+        int numberOP = eq.size();
         for(int i = 0; i < numberOP; i++){
             if(i % 2 == 0){
                 gotString = eq.get(i);
@@ -74,13 +75,49 @@ public class GenerateEquation {
         for(int i = 0; i < numberOfOperators; i++){
             switch (equation.get(1)) {
                 case "+":
-                    return Integer.toString((intList.get(i) + intList.get(i+1)));
+                    if(i == numberOfOperators - 1){
+                        return Integer.toString((intList.get(0) + intList.get(1)));
+                    }else if(i != numberOfOperators - 1){
+                        temp.set(0, Integer.toString((intList.get(0) + intList.get(1))));
+                        temp.remove(1);
+                        temp.remove(1);
+                        intList.set(0, (intList.get(0) + intList.get(1)));
+                        intList.remove(1);
+                        System.out.println("NerdleBack.GenerateEquation.generateResult()");
+                    }
                 case "-":
-                    return Integer.toString((intList.get(i) - intList.get(i+1)));                   
+                    if(i == numberOfOperators - 1){
+                        return Integer.toString((intList.get(0) - intList.get(1)));
+                    }else if(i != numberOfOperators - 1){
+                        temp.set(0, Integer.toString((intList.get(0) - intList.get(1))));
+                        temp.remove(1);
+                        temp.remove(1);
+                        intList.set(0, (intList.get(0) - intList.get(1)));
+                        intList.remove(1);
+                        System.out.println("NerdleBack.GenerateEquation.generateResult()");
+                    }
                 case "*":
-                    return Integer.toString((intList.get(i) * intList.get(i+1)));
+                    if(i == numberOfOperators - 1){
+                        return Integer.toString((intList.get(0) * intList.get(1)));
+                    }else if(i != numberOfOperators - 1){
+                        temp.set(0, Integer.toString((intList.get(0) * intList.get(1))));
+                        temp.remove(1);
+                        temp.remove(1);
+                        intList.set(0, (intList.get(0) * intList.get(1)));
+                        intList.remove(1);
+                        System.out.println("NerdleBack.GenerateEquation.generateResult()");
+                    }
                 case "/":
-                    return Integer.toString((intList.get(i) / intList.get(i+1)));
+                    if(i == numberOfOperators - 1){
+                        return Integer.toString((intList.get(0) / intList.get(1)));
+                    }else if(i != numberOfOperators - 1){
+                        temp.set(0, Integer.toString((intList.get(0) / intList.get(1))));
+                        temp.remove(1);
+                        temp.remove(1);
+                        intList.set(0, (intList.get(0) / intList.get(1)));
+                        intList.remove(1);
+                        System.out.println("NerdleBack.GenerateEquation.generateResult()");
+                    }
             }
         }
         
