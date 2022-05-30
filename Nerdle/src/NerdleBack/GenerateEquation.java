@@ -21,7 +21,7 @@ public class GenerateEquation {
         }else if(numberOfOperators == 2){
             return Integer.toString(randomGenerator.nextInt(100));
         }else{
-            return Integer.toString(randomGenerator.nextInt(10));
+            return Integer.toString(randomGenerator.nextInt(25));
         }
     }
 
@@ -167,6 +167,4 @@ public class GenerateEquation {
         totalLen++;
         return totalLen;
     }
-    
-    
 }
