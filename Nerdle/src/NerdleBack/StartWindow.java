@@ -36,6 +36,11 @@ public class StartWindow extends javax.swing.JFrame {
         btnTest.setBackground(new java.awt.Color(255, 255, 0));
         btnTest.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnTest.setText("Test");
+        btnTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestActionPerformed(evt);
+            }
+        });
 
         btnYeniOyun.setBackground(new java.awt.Color(51, 255, 51));
         btnYeniOyun.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -76,7 +81,7 @@ public class StartWindow extends javax.swing.JFrame {
         lblAverageTime.setText("Ortalama Harcanan Süre: 0 Saniye");
 
         lblNameStart.setBackground(new java.awt.Color(255, 255, 255));
-        lblNameStart.setFont(new java.awt.Font("Chiller", 1, 24)); // NOI18N
+        lblNameStart.setFont(new java.awt.Font("Rasa SemiBold", 1, 18)); // NOI18N
         lblNameStart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNameStart.setText("Nerdle --- Daily Equation Game");
         lblNameStart.setBorder(javax.swing.BorderFactory.createMatteBorder(6, 6, 6, 6, new java.awt.Color(255, 204, 102)));
@@ -139,6 +144,12 @@ public class StartWindow extends javax.swing.JFrame {
         NewGameFrame newgame = new NewGameFrame();
         newgame.setVisible(true);
     }//GEN-LAST:event_btnYeniOyunActionPerformed
+
+    private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
+        dispose();
+        TestFrame testF = new TestFrame();
+        testF.setVisible(true);
+    }//GEN-LAST:event_btnTestActionPerformed
 
     
     public static void main(String args[]) {

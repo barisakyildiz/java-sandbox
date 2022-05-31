@@ -90,6 +90,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Test"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTestActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnYeniOyun">
       <Properties>
@@ -192,7 +195,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Chiller" size="24" style="1"/>
+          <Font name="Rasa SemiBold" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nerdle --- Daily Equation Game"/>
