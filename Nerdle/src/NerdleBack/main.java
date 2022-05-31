@@ -2,6 +2,7 @@ package NerdleBack;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 public class main {
     
@@ -28,6 +29,8 @@ public class main {
                 }
             }
         }while((l < 7 || l > 9) || result.equals("0"));
+        
+        StartWindow.main(args);
         
     }
 }
